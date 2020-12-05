@@ -1,6 +1,6 @@
-from PyQt5.QtWidgets import QListWidget, QListWidgetItem
+from PyQt5 import QtWidgets
 
-class SubMenu(QListWidget):
+class SubMenu(QtWidgets.QListWidget):
     def __init__(self):
         super().__init__()
 
