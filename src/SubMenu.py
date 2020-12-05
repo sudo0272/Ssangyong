@@ -56,6 +56,9 @@ class SubMenu(QListWidget):
 
         self.setFixedWidth(200)
 
+        with open('SubMenu.qss') as f:
+            self.setStyleSheet(f.read())
+
     def updateList(self, index: int):
         self.clear()
         self.addItems(self.__items[index])

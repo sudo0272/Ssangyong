@@ -27,6 +27,9 @@ class TopMenu(QListWidget):
 
         self.itemClicked.connect(self.updateSubMenu)
 
+        with open('TopMenu.qss') as f:
+            self.setStyleSheet(f.read())
+
     def updateSubMenu(self):
         self.topMenuChanged.emit(self.currentIndex().row())
 

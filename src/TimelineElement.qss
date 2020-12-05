@@ -1,0 +1,10 @@
+QLabel#timeline-element-header {
+  font-size: 17px;
+  font-weight: 700;
+}
+
+QLabel#timeline-element-item {
+  font-size: 15px;
+  padding-left: 5px;
+}
+

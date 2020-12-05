@@ -1,0 +1,9 @@
+SubMenu {
+  font-size: 20px;
+  background-color: #0ab04a;
+}
+
+SubMenu::item:selected {
+  background-color: #1bc15b;
+}
+

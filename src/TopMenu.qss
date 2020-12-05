@@ -1,0 +1,10 @@
+TopMenu {
+  font-size: 25px;
+  background-color: #ee7431;
+  padding: 5px;
+}
+
+TopMenu::item:selected {
+  background-color: #ff8542;
+}
+
