@@ -19,8 +19,13 @@ class TopMenu(QtWidgets.QListWidget):
     def initUI(self):
         self.addItems(self.__items)
 
-        self.itemClicked.connect(self.openSubMenu)
+        # initialize TopMenu
+        self.setCurrentRow(0)
 
-    def openSubMenu(self):
+        self.setFixedWidth(200)
+
+        self.itemClicked.connect(self.updateSubMenu)
+
+    def updateSubMenu(self):
         self.topMenuChanged.emit(self.currentIndex().row())
 

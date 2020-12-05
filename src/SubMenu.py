@@ -51,7 +51,13 @@ class SubMenu(QtWidgets.QListWidget):
     def initUI(self):
         self.__topMenu.topMenuChanged.connect(self.updateList)
 
+        # initialize SubMenu
+        self.updateList(0)
+
+        self.setFixedWidth(200)
+
     def updateList(self, index: int):
         self.clear()
         self.addItems(self.__items[index])
+        self.setCurrentRow(0)
 
