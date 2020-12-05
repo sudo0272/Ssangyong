@@ -10,5 +10,15 @@ class TopMenu(QListWidget):
             '교사'
         ]
 
+        self.initUI()
+
+    def initUI(self):
         self.addItems(self.__top_menus)
+
+        self.itemClicked.connect(self.open_submenu)
+
+    def open_submenu(self):
+        #TODO: add codes
+
+        print(self.currentIndex().row())
 
