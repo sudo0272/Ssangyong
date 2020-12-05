@@ -1,7 +1,8 @@
-from PyQt5 import QtWidgets, QtCore
+from PyQt5.QtWidgets import QListWidget
+from PyQt5.QtCore import pyqtSignal
 
-class TopMenu(QtWidgets.QListWidget):
-    topMenuChanged = QtCore.pyqtSignal(int)
+class TopMenu(QListWidget):
+    topMenuChanged = pyqtSignal(int)
 
     def __init__(self):
         super().__init__()
