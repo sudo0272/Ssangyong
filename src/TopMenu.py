@@ -1,6 +1,8 @@
-from PyQt5 import QtWidgets
+from PyQt5 import QtWidgets, QtCore
 
 class TopMenu(QtWidgets.QListWidget):
+    topMenuChanged = QtCore.pyqtSignal(int)
+
     def __init__(self):
         super().__init__()
 
@@ -17,10 +19,8 @@ class TopMenu(QtWidgets.QListWidget):
     def initUI(self):
         self.addItems(self.__items)
 
-        self.itemClicked.connect(self.openSubmenu)
+        self.itemClicked.connect(self.openSubMenu)
 
-    def openSubmenu(self):
-        #TODO: add codes
-
-        print(self.currentIndex().row())
+    def openSubMenu(self):
+        self.topMenuChanged.emit(self.currentIndex().row())
 

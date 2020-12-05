@@ -1,8 +1,11 @@
 from PyQt5 import QtWidgets
+from TopMenu import TopMenu
 
 class SubMenu(QtWidgets.QListWidget):
-    def __init__(self):
+    def __init__(self, topMenu: TopMenu):
         super().__init__()
+
+        self.__topMenu = topMenu
 
         self.__items = [
             # 학교
@@ -43,8 +46,10 @@ class SubMenu(QtWidgets.QListWidget):
             ]
         ]
 
+        self.initUI()
+
     def initUI(self):
-        pass
+        self.__topMenu.topMenuChanged.connect(self.updateList)
 
     def updateList(self, index: int):
         self.clear()
