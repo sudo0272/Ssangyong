@@ -4,8 +4,10 @@ class TopMenu(QListWidget):
     def __init__(self):
         super().__init__()
 
-        self.__top_menus = [
+        self.__items = [
             '학교',
+            '과학중점학교',
+            '동아리',
             '학생',
             '교사'
         ]
@@ -13,11 +15,11 @@ class TopMenu(QListWidget):
         self.initUI()
 
     def initUI(self):
-        self.addItems(self.__top_menus)
+        self.addItems(self.__items)
 
-        self.itemClicked.connect(self.open_submenu)
+        self.itemClicked.connect(self.openSubmenu)
 
-    def open_submenu(self):
+    def openSubmenu(self):
         #TODO: add codes
 
         print(self.currentIndex().row())
