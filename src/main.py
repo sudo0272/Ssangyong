@@ -2,6 +2,8 @@ from PyQt5.QtWidgets import QWidget, QStackedWidget, QHBoxLayout, QApplication
 from TopMenu import TopMenu
 from SubMenu import SubMenu
 from Timeline import Timeline
+import requests
+import re
 import sys
 
 class Window(QWidget):
@@ -17,9 +19,22 @@ class Window(QWidget):
         subMenu = SubMenu(topMenu)
         content = QStackedWidget()
 
-        timeline = Timeline([('2022', ['hello', 'hi']), ('ho', ['aa', 'bb'])])
+        schoolHistory = Timeline()
 
-        content.addWidget(timeline)
+        # crawl school history
+        url = 'http://sy.caehs.kr/sub/info.do?m=010401&s=sy'
+        html = requests.request('GET', url).text
+        data = re.findall(r'(?<=\<td\>).*?(?=</td>)', html, re.DOTALL)
+
+        history = []
+        for i in range(0, len(data), 3):
+            date = data[i] + '.' + data[i + 1]
+            log = ' '.join(data[i + 2].split())
+            history.append((date, [log]))
+
+        schoolHistory.setTimeline(history)
+
+        content.addWidget(schoolHistory)
 
         container.addWidget(topMenu)
         container.addWidget(subMenu)
