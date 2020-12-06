@@ -1,13 +1,16 @@
 from PyQt5.QtWidgets import QListWidget
+from PyQt5.QtCore import pyqtSignal
 from TopMenu import TopMenu
 
 class SubMenu(QListWidget):
+    subMenuChanged = pyqtSignal(int, int)
+    
     def __init__(self, topMenu: TopMenu):
         super().__init__()
 
         self.__topMenu = topMenu
 
-        self.__items = [
+        self._items = [
             # 학교
             [
                 "역사",
@@ -50,17 +53,25 @@ class SubMenu(QListWidget):
 
     def initUI(self):
         self.__topMenu.topMenuChanged.connect(self.updateList)
+        self.__topMenuIndex = 0
 
         # initialize SubMenu
         self.updateList(0)
 
         self.setFixedWidth(200)
 
+        self.itemClicked.connect(self.updateContent)
+
         with open('SubMenu.qss') as f:
             self.setStyleSheet(f.read())
 
     def updateList(self, index: int):
+        self.__topMenuIndex = index
+
         self.clear()
-        self.addItems(self.__items[index])
+        self.addItems(self._items[index])
         self.setCurrentRow(0)
+
+    def updateContent(self):
+        self.subMenuChanged.emit(self.__topMenuIndex, self.currentIndex().row())
 
