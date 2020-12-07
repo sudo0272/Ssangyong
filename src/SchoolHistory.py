@@ -7,16 +7,13 @@ class SchoolHistory(Timeline):
     def __init__(self):
         super().__init__()
 
-        url = 'http://sy.caehs.kr/sub/info.do?m=010401&s=sy'
-        html = requests.request('GET', url).text
-        data = re.findall(r'(?<=\<td\>).*?(?=</td>)', html, re.DOTALL)
-
-        self.__history = []
-
-        for i in range(0, len(data), 3):
-            date = data[i] + '.' + data[i + 1]
-            log = ' '.join(data[i + 2].split())
-            self.__history.append((date, [log]))
-
-        self.setTimeline(self.__history)
+        self.setTimeline([
+            ('2020.9.1', ['제7대 고미영 교장 취임']),
+            ('2020.1.3', ['제14회 졸업식(455명, 졸업생 누계 6,842명)']),
+            ('2017.3.1', ['제6대 강혜옥 교장 취임']),
+            ('2011.3.1', ['과학중점학교 운영(교육부)']),
+            ('2004.5.20', ['개교식']),
+            ('2004.3.4', ['제1회 입학식(14학급)']),
+            ('2002.1.15', ['천안쌍용고등학교 설립인가(36학급)'])
+        ])
 

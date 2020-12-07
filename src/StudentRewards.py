@@ -6,21 +6,28 @@ class StudentRewards(Timeline):
     def __init__(self):
         super().__init__()
 
-        html = request('GET', 'http://www.sy.caehs.kr/sub/info.do?m=010404&s=sy').text
-        data = re.findall(r'(?<=\<tbody\>).*?(?=\<\/tbody\>)', html, re.DOTALL)[1]
-        headers = re.findall(r'(?<=\<th\>).*?(?=\<\/th\>)', data, re.DOTALL)
-        items = []
-        for i in headers:
-            items.append([i, []])
-
-        contentGroup = re.findall(r'(?<=\<tr\>).*?(?=\<\/tr\>)', data, re.DOTALL)[1:]
-        for i in contentGroup:
-            rewards = re.findall(r'(?<=\<p style="margin-top: 0pt; margin-bottom: 0pt;"\>).*?(?=\<\/p\>)', i, re.DOTALL)
-
-            for index, item in enumerate(rewards):
-                items[index][1].append(' '.join(item.split()))
-
-        self.setTimeline(items)
-
-        print(items)
+        self.setTimeline([
+            ['2019',[
+                '2019학년도 제39회 한국 정보올림피아드 고등부 동상',
+                '2019학년도 스승의 날 기념 전국 RCY 백일장 및 그림그리기 대회',
+                '- 그림부분 대상(교육부장관상), 그림부문 은상(충남도지사상)',
+                '- 산문부문 은상(충남도지사상)',
+                '2019학년도 천안시 응급처치 경연대회',
+                '- 고등 남학생부 금상, 고등 여학생부 은상',
+                '2019 학년도 충남 수학 탐구 나눔 한마당 수학탐구대회',
+                '- 수학용어 쉽게 말하기 부문 동상',
+                '- 수학 디자인 부문  우수상',
+                '- 주제가 있는 수학 UCC 부문 우수상'
+            ]],
+            ['2018', [
+                '2018학년도 제12회 충남창의력경진대회 은상',
+                '2018학년도 제 8회 충남청소년수학소눈문대회 은상',
+                '2018학년도 제20회 충남정보올림피아드(경시부문) 은상, 동상',
+                '2018학년도 충남청소년연극제 최우수연기상',
+                '2018학년도 충남학생연극축제 우수연기상',
+                '2018학년도 천안시 중고등학생 미술실기대회 동상',
+                '2018학년도 충남학생문학상(소설부문) 금상',
+                '2018학년도 창의융합형 인 문학기행(보고서부문) 표창'
+            ]]
+        ])
 

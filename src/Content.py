@@ -7,8 +7,7 @@ from PyQt5.QtWidgets import QLabel
 from PyQt5.QtWebEngineWidgets import QWebEngineView
 from PyQt5.QtGui import QFont
 from PyQt5.QtCore import QUrl
-from TopMenu import TopMenu
-from SubMenu import SubMenu
+from Menu import Menu
 from SchoolHistory import SchoolHistory
 from SchoolFacility import SchoolFacility
 from SchoolLocation import SchoolLocation
@@ -19,54 +18,24 @@ from SchoolRewards import SchoolRewards
 from StudentRewards import StudentRewards
 
 class Content(QStackedWidget):
-    def __init__(self, subMenu: SubMenu):
+    def __init__(self, menu: Menu):
         super().__init__()
-        self.__subMenu = subMenu
-        self.__indices = []
-        t = 0
-        for i in self.__subMenu._items:
-            self.__indices.append(t)
-            t += len(i)
+
+        self.__menu = menu
 
         self.initUI()
 
     def initUI(self):
-        self.__subMenu.subMenuChanged.connect(self.updateContent)
+        self.__menu.menuChanged.connect(self.updateContent)
 
         self.addWidget(SchoolHistory())
         self.addWidget(SchoolFacility())
         self.addWidget(SchoolRewards())
-        self.addWidget(SchoolLocation())
-
-        # crawl school promotion videos from youtube
-        self.addWidget(QWidget())
-        # crawl school uniform
-        self.addWidget(QWidget())
-        self.addWidget(SchoolLink())
-
-        self.addWidget(STEMSchool())
-        # crawl pictures
-        self.addWidget(QWidget())
-
-        # crawl regular clubs list
-        self.addWidget(QWidget())
-        # crawl autonomous clubs list
-        self.addWidget(QWidget())
-        # crawl clubs promotion videos from youtube
-        self.addWidget(QWidget())
-        # crawl club pictures
-        self.addWidget(QWidget())
-
-        # crawl percentage of students who go to universities
-        self.addWidget(QWidget())
-        # crawl rewards that students got
         self.addWidget(StudentRewards())
-        # crawl status of students
-        self.addWidget(QWidget())
+        self.addWidget(SchoolLocation())
+        self.addWidget(SchoolLink())
+        self.addWidget(STEMSchool())
 
-        # crawl status of teachers
-        self.addWidget(QWidget())
-
-    def updateContent(self, topMenuIndex, subMenuIndex):
-        self.setCurrentIndex(self.__indices[topMenuIndex] + subMenuIndex)
+    def updateContent(self, menuIndex):
+        self.setCurrentIndex(menuIndex)
 

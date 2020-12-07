@@ -6,19 +6,23 @@ class SchoolRewards(Timeline):
     def __init__(self):
         super().__init__()
 
-        html = request('GET', 'http://www.sy.caehs.kr/sub/info.do?m=010404&s=sy').text
-        data = re.search(r'(?<=\<tbody\>).*?(?=\<\/tbody\>)', html, re.DOTALL).group()
-        headers = re.findall(r'(?<=\<th\>).*?(?=\<\/th\>)', data, re.DOTALL)
-        items = []
-        for i in headers:
-            items.append([i, []])
-
-        contentGroup = re.findall(r'(?<=\<tr\>).*?(?=\<\/tr\>)', data, re.DOTALL)[1:]
-        for i in contentGroup:
-            rewards = re.findall(r'(?<=\<p style="margin-top: 0pt; margin-bottom: 0pt;"\>).*?(?=\<\/p\>)', i, re.DOTALL)
-
-            for index, item in enumerate(rewards):
-                items[index][1].append(item)
-
-        self.setTimeline(items)
+        self.setTimeline([
+            ['2019', [
+                '2019학년도 학교 흡연예방사업 보건복지부장관 표창',
+                '2019학년도 학사운영 다양화 내실화 교육감  표창',
+                '2019학년도 외국어교육 우수학교 교육감 표창',
+                '2019학년도 누리봄 교실 운영 교육감 표창',
+                '2019학년도 참학력 수학 선도학교 교육감 표창',
+                '2019학년도 학교예술교육 우수기관 교육감 표창',
+                '2019학년도 제11회  천안·아산 고등학교 법질서로고송 대회 금상 수상']],
+            ['2018', [
+                '2018학년도 제12회 전국장애학생 체육대회 우수학교',
+                '2018학년도 청소년의 달 친구 사랑주간 운영 우수학교',
+                '2018학년도 제20회 충청남도학생연극축제 우수 학교',
+                '2018학년도 학교흡연예방사업 우수학교',
+                '2018학년도 방과후 학교 우수학교',
+                '2018학년도 충남청소년연극제 금상',
+                '2018학년도 충남학생연극축제 최우수상'
+            ]]
+        ])
 

@@ -3,8 +3,7 @@ from PyQt5.QtWidgets import QApplication
 from PyQt5.QtWidgets import QWidget
 from PyQt5.QtWidgets import QHBoxLayout
 from PyQt5.QtCore import QSize
-from TopMenu import TopMenu
-from SubMenu import SubMenu
+from Menu import Menu
 from Content import Content
 
 class Window(QWidget):
@@ -12,12 +11,10 @@ class Window(QWidget):
         super().__init__()
         container = QHBoxLayout()
 
-        topMenu = TopMenu()
-        subMenu = SubMenu(topMenu)
-        content = Content(subMenu)
+        menu = Menu()
+        content = Content(menu)
 
-        container.addWidget(topMenu)
-        container.addWidget(subMenu)
+        container.addWidget(menu)
         container.addWidget(content)
 
         self.setLayout(container)
