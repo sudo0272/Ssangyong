@@ -24,6 +24,15 @@ class TimelineElement(QWidget):
 
         self.setLayout(self.__container)
 
-        with open('TimelineElement.qss') as f:
-            self.setStyleSheet(f.read())
+        self.setStyleSheet('''
+            QLabel#timeline-element-header {
+              font-size: 17px;
+              font-weight: 700;
+            }
+
+            QLabel#timeline-element-item {
+              font-size: 15px;
+              padding-left: 5px;
+            }
+        ''')
 

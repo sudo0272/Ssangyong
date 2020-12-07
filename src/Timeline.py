@@ -24,6 +24,3 @@ class Timeline(QWidget):
 
         self.setLayout(self.__container)
 
-        with open('Timeline.qss') as f:
-            self.setStyleSheet(f.read())
-

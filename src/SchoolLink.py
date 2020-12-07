@@ -12,6 +12,9 @@ class SchoolLink(QLabel):
         self.setAlignment(Qt.AlignCenter)
         self.setOpenExternalLinks(True)
 
-        with open('./SchoolLink.qss') as f:
-            self.setStyleSheet(f.read())
+        self.setStyleSheet('''
+            SchoolLink {
+              font-size: 30px;
+            }
+        ''')
 

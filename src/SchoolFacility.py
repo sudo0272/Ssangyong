@@ -60,3 +60,9 @@ class SchoolFacility(QTableWidget):
             self.setItem(i, 0, QTableWidgetItem(j[0]))
             self.setItem(i, 1, QTableWidgetItem(str(j[1])))
 
+        self.setStyleSheet('''
+            #school-facility {
+              width: 100%;
+            }
+        ''')
+

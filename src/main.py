@@ -19,8 +19,11 @@ class Window(QWidget):
 
         self.setLayout(container)
 
-        with open('Window.qss') as f:
-            self.setStyleSheet(f.read())
+        self.setStyleSheet('''
+            Window {
+              background-color: #ddeffb;
+            }
+        ''')
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)

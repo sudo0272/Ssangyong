@@ -23,6 +23,14 @@ class STEMSchool(QWidget):
 
         self.setLayout(container)
 
-        with open('./STEMSchool.qss') as f:
-            self.setStyleSheet(f.read())
+        self.setStyleSheet('''
+            #stemschool-title {
+              font-size: 25px;
+              font-weight: 700;
+            }
+
+            #stemschool-content {
+              font-size: 20px;
+            }
+        ''')
 

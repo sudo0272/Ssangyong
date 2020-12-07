@@ -26,8 +26,16 @@ class Menu(QListWidget):
 
         self.itemClicked.connect(self.updateContent)
 
-        with open('Menu.qss') as f:
-            self.setStyleSheet(f.read())
+        self.setStyleSheet('''
+            Menu {
+                font-size: 20px;
+                background-color: #0ab04a;
+            }
+
+            Menu::item:selected {
+              background-color: #1bc15b;
+            }
+        ''')
 
     def updateContent(self):
         self.menuChanged.emit(self.currentIndex().row())
