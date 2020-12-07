@@ -2,4 +2,7 @@ env/
 __pycache__/
 test/
 *.swp
+src/build/
+src/dist/
+*.spec
 
