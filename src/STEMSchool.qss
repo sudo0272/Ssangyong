@@ -1,0 +1,9 @@
+#stemschool-title {
+  font-size: 25px;
+  font-weight: 700;
+}
+
+#stemschool-content {
+  font-size: 20px;
+}
+

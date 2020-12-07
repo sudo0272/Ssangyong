@@ -12,7 +12,9 @@ from SubMenu import SubMenu
 from SchoolHistory import SchoolHistory
 from SchoolFacility import SchoolFacility
 from SchoolLocation import SchoolLocation
+from SchoolLink import SchoolLink
 from Timeline import Timeline
+from STEMSchool import STEMSchool
 
 class Content(QStackedWidget):
     def __init__(self, subMenu: SubMenu):
@@ -29,11 +31,8 @@ class Content(QStackedWidget):
     def initUI(self):
         self.__subMenu.subMenuChanged.connect(self.updateContent)
 
-        schoolHistory = SchoolHistory()
-        self.addWidget(schoolHistory)
-
-        schoolFacility = SchoolFacility()
-        self.addWidget(schoolFacility)
+        self.addWidget(SchoolHistory())
+        self.addWidget(SchoolFacility())
 
         schoolRewards = Timeline()
         # html = requests.request('GET', 'http://www.sy.caehs.kr/sub/info.do?m=010404&s=sy').text
@@ -52,10 +51,10 @@ class Content(QStackedWidget):
         # crawl school uniform
         self.addWidget(QWidget())
         # homepage link
-        self.addWidget(QWidget())
+        self.addWidget(SchoolLink())
 
         # crawl what introduces STEM school
-        self.addWidget(QWidget())
+        self.addWidget(STEMSchool())
         # crawl pictures
         self.addWidget(QWidget())
 
