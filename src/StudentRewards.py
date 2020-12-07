@@ -18,7 +18,9 @@ class StudentRewards(Timeline):
             rewards = re.findall(r'(?<=\<p style="margin-top: 0pt; margin-bottom: 0pt;"\>).*?(?=\<\/p\>)', i, re.DOTALL)
 
             for index, item in enumerate(rewards):
-                items[index][1].append(item)
+                items[index][1].append(' '.join(item.split()))
 
         self.setTimeline(items)
+
+        print(items)
 
