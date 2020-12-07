@@ -29,6 +29,7 @@ if __name__ == '__main__':
     app = QApplication(sys.argv)
     window = Window()
     window.setMinimumSize(QSize(800, 600))
+    window.setWindowTitle('쌍용고')
     window.show()
     app.exec_()
 
