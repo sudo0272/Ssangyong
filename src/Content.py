@@ -15,6 +15,7 @@ from SchoolLocation import SchoolLocation
 from SchoolLink import SchoolLink
 from Timeline import Timeline
 from STEMSchool import STEMSchool
+from SchoolRewards import SchoolRewards
 
 class Content(QStackedWidget):
     def __init__(self, subMenu: SubMenu):
@@ -33,27 +34,15 @@ class Content(QStackedWidget):
 
         self.addWidget(SchoolHistory())
         self.addWidget(SchoolFacility())
-
-        schoolRewards = Timeline()
-        # html = requests.request('GET', 'http://www.sy.caehs.kr/sub/info.do?m=010404&s=sy').text
-        # schoolRewards, studentRewards = re.findall(r'(?<=\<tbody\>).*?(?=\<\/tbody\>)', html, re.DOTALL)
-
-        # header = re.findall(r'(?<=\<th\>).?(?=\<\/th\>)', schoolRewards, re.DOTALL)
-        # print(header)
-
-        self.addWidget(schoolRewards)
-
-        schoolLocation = SchoolLocation()
-        self.addWidget(schoolLocation)
+        self.addWidget(SchoolRewards())
+        self.addWidget(SchoolLocation())
 
         # crawl school promotion videos from youtube
         self.addWidget(QWidget())
         # crawl school uniform
         self.addWidget(QWidget())
-        # homepage link
         self.addWidget(SchoolLink())
 
-        # crawl what introduces STEM school
         self.addWidget(STEMSchool())
         # crawl pictures
         self.addWidget(QWidget())
