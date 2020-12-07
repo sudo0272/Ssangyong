@@ -16,6 +16,7 @@ from SchoolLink import SchoolLink
 from Timeline import Timeline
 from STEMSchool import STEMSchool
 from SchoolRewards import SchoolRewards
+from StudentRewards import StudentRewards
 
 class Content(QStackedWidget):
     def __init__(self, subMenu: SubMenu):
@@ -59,7 +60,7 @@ class Content(QStackedWidget):
         # crawl percentage of students who go to universities
         self.addWidget(QWidget())
         # crawl rewards that students got
-        self.addWidget(QWidget())
+        self.addWidget(StudentRewards())
         # crawl status of students
         self.addWidget(QWidget())
 
